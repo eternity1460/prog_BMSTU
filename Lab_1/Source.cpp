@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <conio.h>
 #include <cstdlib>
+#include <cmath>
 
 using namespace std;
 
@@ -58,7 +59,7 @@ void runRectangle() {
 }
 
 int main() {
-    int m, a, b;
+    int m;
     setlocale(0, "rus");
 
 M:
@@ -88,7 +89,6 @@ M:
         switch (p)
         {
         case 1: {
-            char key;
             system("cls");
             cout << "Задание с первого семинара\n";
             cout << "Нажмите любую клавишу для демонстрации\n";
