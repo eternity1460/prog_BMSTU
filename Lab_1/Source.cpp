@@ -60,12 +60,14 @@ void runRectangle() {
 int main() {
     int m, a, b;
     setlocale(0, "rus");
-M:  system("cls");
+
+M:
+    system("cls");
+
     cout << "Меню:\n";
-    cout << "1. Задание с первого семинара\n";
-    cout << "2. Домашнее задание" << endl;
-    cout << "3. Вычисление выражения" << endl;
-    cout << "4. Выход из программы\n";
+    cout << "1. Простые задачи\n";
+    cout << "2. Вычисление выражения" << endl;
+    cout << "3. Выход из программы\n";
     cout << "\nВведите выбранный пункт меню:";
     cin >> m;
 
@@ -73,54 +75,80 @@ M:  system("cls");
     switch (m)
     {
     case 1: {
-        char key;
+        int p;
         system("cls");
-        cout << "Задание с первого семинара\n";
-        cout << "Нажмите любую клавишу для демонстрации\n";
-        _getch();
-        system("cls");
-        char str[3];
-        setlocale(0, "");
-        cout << "Введите символ\n";
-        cin >> str;
-        _getch();
-        system("cls");
-        int i = 0;
-        while (i<4) {
-            cout << str << "\n" << str << "\n" << str << "\n";
-            Sleep(500);
-            system("cls");
-            cout << "        " << str << "\n";
-            cout << "        " << str << "\n";
-            cout << "        " << str << "\n";
-            Sleep(500);
-            system("cls");
-            cout << "\n\n\n\n\n\n";
-            cout << "        " << str << "\n";
-            cout << "        " << str << "\n";
-            cout << "        " << str << "\n";
-            Sleep(500);
-            system("cls");
-            cout << "\n\n\n\n\n\n";
-            cout << str << "\n" << str << "\n" << str << "\n";
-            Sleep(500);
-            system("cls");
-            i++;
 
+        cout << "Простые задачи:\n";
+        cout << "1. Задание с первого семинара\n";
+        cout << "2. Домашнее задание\n";
+        cout << "3. Назад\n";
+        cout << "\nВведите выбранный пункт меню:";
+        cin >> p;
+
+        switch (p)
+        {
+        case 1: {
+            char key;
+            system("cls");
+            cout << "Задание с первого семинара\n";
+            cout << "Нажмите любую клавишу для демонстрации\n";
+            _getch();
+            system("cls");
+            char str[3];
+            setlocale(0, "");
+            cout << "Введите символ\n";
+            cin >> str;
+            _getch();
+            system("cls");
+            int i = 0;
+            while (i < 4) {
+                cout << str << "\n" << str << "\n" << str << "\n";
+                Sleep(500);
+                system("cls");
+                cout << "        " << str << "\n";
+                cout << "        " << str << "\n";
+                cout << "        " << str << "\n";
+                Sleep(500);
+                system("cls");
+                cout << "\n\n\n\n\n\n";
+                cout << "        " << str << "\n";
+                cout << "        " << str << "\n";
+                cout << "        " << str << "\n";
+                Sleep(500);
+                system("cls");
+                cout << "\n\n\n\n\n\n";
+                cout << str << "\n" << str << "\n" << str << "\n";
+                Sleep(500);
+                system("cls");
+                i++;
+            }
+            break;
         }
+
+        case 2:
+            system("cls");
+            cout << "Домашнее задание\n";
+            cout << "Нажмите любую клавишу для демонстрации\n";
+            _getch();
+            system("cls");
+
+            runRectangle();
+
+            break;
+
+        case 3:
+            goto M;
+
+        default:
+            cout << "Неверный пункт меню" << endl;
+            _getch();
+        }
+
         break;
     }
-    case 2:
-        system("cls");
-        cout << "Домашнее задание\n";
-        cout << "Нажмите любую клавишу для демонстрации\n";
-        _getch();
-        system("cls");
-        
-        runRectangle();
 
-        break;
-    case 3: {
+
+    case 2: {
         system("cls");
         cout << "Решение задачи вычисления выражения \n ";
         cout << "Нажмите любую клавишу для демонстрации\n";
@@ -128,19 +156,25 @@ M:  system("cls");
         system("cls");
         cout << "Формула: y = (a / b) * sqrt(a^2 - b^2) * (sin(a + 2*c) + b^(1/3)) / c^(1/4)\n\n";
         cout << "Введите коэффиценты для формулы\n";
-        double x , y , z ;
+        double x, y, z;
         cin >> x >> y >> z;
         system("cls");
-        cout << "коэффиценты\na=" << x << "\nb=" << y << "\nс=" << z<<"\n";
+        cout << "коэффиценты\na=" << x << "\nb=" << y << "\nс=" << z << "\n";
         double result = calculat(x, y, z);
         cout << "Результат вычисления " << result;
         _getch();
 
         break;
     }
-    case 4: return 0;
-    default: cout << "Неверный пункт меню" << endl; _getch();
+
+    case 3:
+        return 0;
+
+    default:
+        cout << "Неверный пункт меню" << endl;
+        _getch();
     }
+
     goto M;
     return 0;
 }
