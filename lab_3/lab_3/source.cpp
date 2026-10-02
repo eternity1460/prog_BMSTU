@@ -25,7 +25,6 @@ void shiftRight(int A[], int n,int k) {
 int countLocalMax(int A[], int n)
 {
 	int count = 0;
-
 	if (A[0] > A[1])
 		count++;
 
@@ -44,15 +43,19 @@ int countLocalMax(int A[], int n)
 
 int main() {
 	const int N = 100;
-	int A[N],n,k,m,h;
+	int A[N],n,k,m,h,S;
 	setlocale(0, "rus");
 	SetConsoleOutputCP(CP_UTF8);
 	SetConsoleCP(CP_UTF8);
 	srand(time(0));
+	S = 0;
+	cout << "Введите массив A из N элементов и число k.\n"
+		<< "Программа выполнит циклический сдвиг вправо на k позиций\n"
+		<< "и подсчитает количество локальных максимумов.\n\n";
 	do {
 		cout << "Введите реальный размер массива от 1 до " << N <<" и натуральное число k:\n";
 		cin >> n>>k;
-		if ((n < 1) || (n > N)) { cout << "Неправильный размер массива\n"; }
+		if ((n < 1) || (n > N)||(k<0)) { cout << "Неправильный размер массива, или число k не натуральное\n"; }
 		else break;
 	} while (1);
 	if (k > n) { k = k % n;}
@@ -88,15 +91,23 @@ M:
 	cout << "Исходный массив:\n";
 	for (int i = 0; i < n; i++) {
 		cout << A[i] << " ";
+		S = S + A[i];
 	}
 	cout << endl;
+	cout << "Инвариант 1 (сумма чисел в массиве)=" << S << endl;
+	cout << endl;
+	S = 0;
 	cout << "Смещенный на " << k << " элементов массив:\n";
 	shiftRight(A, n, k);
 	for (int i = 0; i < n; i++) {
 		cout << A[i] << " ";
+		S = S + A[i];
 	}
 	cout << endl;
-	cout << "Количество локальных максимумов в массиве: " << countLocalMax(A, n) << endl;
+	cout << "Инвариант 2 (сумма чисел в массиве)=" << S << endl;
+	cout << endl;
+	if (n == 1) { cout << "Массив из одного числа, локальных максимумов нет" << endl; }
+	else { cout << "Количество локальных максимумов в массиве: " << countLocalMax(A, n) << endl; }
 
 
 }
